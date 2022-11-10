@@ -28,14 +28,15 @@ class TestPrint(unittest.TestCase):
                 'seeders': 1,
                 'leechers': 2,
                 'size': '3.0 MiB',
-                'uploaded': 'never'
+                'uploaded': 'never',
+                'status': 'member'
             }]
             printer.search_results(results)
             prettytable.assert_called_once_with([
                 'LINK', 'SEED', 'LEECH', 'RATIO',
-                'SIZE', 'UPLOAD', 'NAME'])
+                'SIZE', 'STATUS', 'UPLOAD', 'NAME'])
             mock.add_row.assert_has_calls([
-                call([0, 1, 2, '0.5', '3.0 MiB', 'never', 'name'])])
+                call([0, 1, 2, '0.5', '3.0 MiB', '', 'never', 'name'])])
 
     def test_print_results_local(self):
         class MockTable:

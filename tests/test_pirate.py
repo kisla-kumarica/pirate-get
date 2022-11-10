@@ -33,6 +33,7 @@ class TestPirate(unittest.TestCase):
             'leechers': '1',
             'size': '1 MB',
             'uploaded': '1',
+            'status': 'member'
         }
         with patch('pirate.pirate.connect_mirror',
                    return_value=([result], '')):
@@ -54,6 +55,7 @@ class TestPirate(unittest.TestCase):
             'leechers': '1',
             'size': '1 MB',
             'uploaded': '1',
+            'status': 'member'
         }
         with patch('pirate.pirate.connect_mirror',
                    return_value=([result], '')):
