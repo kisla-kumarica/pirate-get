@@ -52,7 +52,7 @@ class Printer:
             table.align['NAME'] = 'l'
         else:
             table = pretty.VeryPrettyTable(['LINK', 'SEED', 'LEECH',
-                                            'RATIO', 'SIZE',
+                                            'RATIO', 'SIZE', 'STATUS',
                                             'UPLOAD', 'NAME'])
             table.align['NAME'] = 'l'
             table.align['SEED'] = 'r'
@@ -60,6 +60,7 @@ class Printer:
             table.align['RATIO'] = 'r'
             table.align['SIZE'] = 'r'
             table.align['UPLOAD'] = 'l'
+            table.align['STATUS'] = 'l'
 
         table.max_width = columns
         table.border = False
@@ -76,6 +77,7 @@ class Printer:
                 no_leechers = int(result['leechers'])
                 size = result['size']
                 date = result['uploaded']
+                status = result['status']
 
                 # compute the S/L ratio (Higher is better)
                 try:
@@ -85,7 +87,7 @@ class Printer:
 
                 content = [n, no_seeders, no_leechers,
                            '{:.1f}'.format(ratio),
-                           size, date, torrent_name[:columns - 50]]
+                           size, status, date, torrent_name[:columns - 50]]
 
             if even or not self.enable_color:
                 table.add_row(content)
