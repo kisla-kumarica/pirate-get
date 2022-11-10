@@ -79,6 +79,9 @@ class Printer:
                 date = result['uploaded']
                 status = result['status']
 
+                if status == 'member':
+                    status = ''
+
                 # compute the S/L ratio (Higher is better)
                 try:
                     ratio = no_seeders / no_leechers
